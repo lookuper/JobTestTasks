@@ -1,2 +1,2 @@
 # JobTestTasks
-Job test tasks
+Job test tasks, more information after first release.
