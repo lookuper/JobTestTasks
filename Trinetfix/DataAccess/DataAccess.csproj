@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbScanner\DbScanner.cs" />
     <Compile Include="DbScanner\DbScanResult.cs" />
     <Compile Include="File.cs" />
     <Compile Include="GenericRepository.cs" />
