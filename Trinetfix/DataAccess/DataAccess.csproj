@@ -52,6 +52,7 @@
     <Compile Include="DbScanner\DbScanner.cs" />
     <Compile Include="DbScanner\DbScanResult.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="FolderScanner\FileScanResult.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrinetfixContext.cs" />
