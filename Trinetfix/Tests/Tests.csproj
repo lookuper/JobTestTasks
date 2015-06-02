@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GenericScannerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestScanResult.cs" />
     <Compile Include="TestSource.cs" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\CommonType\CommonType.csproj">
       <Project>{51244421-1ebf-483c-9b3b-cce233fce49e}</Project>
       <Name>CommonType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{6e4fec51-dd95-4ed8-8aed-055b490a0a3c}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
