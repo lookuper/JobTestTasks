@@ -54,7 +54,6 @@ namespace Tests
             }
         }
 
-
         [TestMethod()]
         public void GenericScannerTest()
         {

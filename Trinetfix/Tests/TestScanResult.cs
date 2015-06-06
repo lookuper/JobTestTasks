@@ -10,7 +10,6 @@ namespace Tests
     {
         public TestScanResult() : base("test name", "test location")
         {
-
         }
 
         protected TestScanResult(string name, string location) : base(name, location)

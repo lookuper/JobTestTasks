@@ -47,6 +47,5 @@ namespace DataAccess
             Words.AddRange(words);
             SaveChanges();
         }
-
     }
 }

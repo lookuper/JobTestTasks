@@ -28,7 +28,6 @@ namespace DataAccess.DbScanner
 
         public DbScanResult() : base("DbScanResult", "Database")
         {
-
         }
 
         protected DbScanResult(string name, string location) : base(name, location)
