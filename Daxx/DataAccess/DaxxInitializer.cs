@@ -26,16 +26,16 @@ namespace DataAccess
                 new Province {Name = "Province1", CountryId = countries.First().Id},
                 new Province {Name = "Province2", CountryId = countries.First().Id },
                 new Province {Name = "Province3", CountryId = countries.Last().Id },
+                new Province {Name = "Province4", CountryId = countries.Last().Id },
             };
 
             context.Provincies.AddRange(provincies);
             context.SaveChanges();
 
-
             var users = new List<User>
             {
                 new User {Login="User1", Password="pass1", AgreeToWorkForFood=false, Location = countries.First() },
-                new User {Login="User2", Password="pass2", AgreeToWorkForFood=false, Location = countries.Last() },
+                new User {Login="User2", Password="pass2", AgreeToWorkForFood=true, Location = countries.Last() },
             };
 
             context.Users.AddRange(users);
