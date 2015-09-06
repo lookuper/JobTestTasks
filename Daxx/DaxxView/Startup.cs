@@ -11,20 +11,11 @@ using Microsoft.Framework.Runtime;
 using Microsoft.Framework.Logging;
 using Microsoft.AspNet.Diagnostics;
 using Microsoft.Data.Entity;
+using DaxxView.Models;
 
 namespace DaxxView
 {
-    using Microsoft.Data.Entity;
 
-    namespace MovieAngularJSApp.Models
-    {
-        public class MoviesAppContext : DbContext
-        {
-
-            public DbSet<string> Movies { get; set; }
-
-        }
-    }
 
     public class Startup
     {
@@ -46,7 +37,7 @@ namespace DaxxView
 
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<DbContext>();
+                .AddDbContext<DaxxContext>();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {

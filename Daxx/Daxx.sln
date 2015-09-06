@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\ModelTests.csproj", "{6311FA80-A18A-41ED-9797-4A107C463154}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DaxxView", "DaxxView\DaxxView.xproj", "{FDB83F79-C39F-49F5-B407-7D5A683752E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaxxTestV2", "DaxxTestV2\DaxxTestV2.csproj", "{8250B901-F018-444F-BA83-E7FCD96F5A14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{6311FA80-A18A-41ED-9797-4A107C463154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6311FA80-A18A-41ED-9797-4A107C463154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6311FA80-A18A-41ED-9797-4A107C463154}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDB83F79-C39F-49F5-B407-7D5A683752E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDB83F79-C39F-49F5-B407-7D5A683752E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDB83F79-C39F-49F5-B407-7D5A683752E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDB83F79-C39F-49F5-B407-7D5A683752E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

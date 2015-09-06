@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CommonTypes
 {
-    public interface IDaxxModel
+    public interface IDaxxModel : IDisposable
     {
         ICollection<UserDto> Users { get; }
         ICollection<CountryDto> Countries { get; }

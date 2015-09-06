@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
+using DaxxView.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,14 +10,18 @@ namespace DaxxView.API
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
+        private readonly DaxxContext context;
+
+        public UsersController(DaxxContext dbContext)
+        {
+            context = dbContext;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<User> Get()
         {
-            return null;
-
-            //var model = new DaxxSqlDbModel();
-            //return model.Users;
+            return context.Users;
         }
 
         // GET api/values/5

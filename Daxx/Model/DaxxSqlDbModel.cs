@@ -78,5 +78,11 @@ namespace Model
                 .GetQueryable()
                 .Any(x => login.Equals(x.Login, StringComparison.OrdinalIgnoreCase));
         }
+
+        public void Dispose()
+        {
+            unit.Dispose();
+            Mapper.Reset();            
+        }
     }
 }

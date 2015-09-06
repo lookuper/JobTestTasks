@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Daxx App";
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/app/users-controller.js")
+}
+
+<div id="bodyContainer" ng-app="DaxxApp">
+    <div class="container">
+        <div class="jumbotron" style="padding-bottom:0px;">
+            <h2>Daxx Test App</h2>
+        </div>
+        <form class="registration" role="form" ng-controller="DaxxCtrl" accept-charset="utf-8">
+            <ul class="list-group">
+                <li>
+                    <label for="usermail">Email:</label>
+                    <input type="email" name="usermail" ng-model="email" class="form-control" placeholder="yourname@email.com" required>
+                </li>
+                <li>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" ng-model="pass" placeholder="Password" required>
+                </li>
+                <li>
+                    <label for="password confirm">Confirm Password</label>
+                    <input type="password" class="form-control" ng-model="passConfirm" placeholder="Password Confirm" required>
+                </li>
+                <li>
+                    <label for="terms">Agree to Trems</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="favoriteColors" ng-model="agree">
+                    </label>
+                </li>               
+            </ul>    
+            <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="next()">Go to step 2</button>                    
+        </form>
+    </div>
+</div>

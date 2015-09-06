@@ -1,11 +1,11 @@
 ﻿{
     "Data": {
         "DefaultConnection": { 
-            "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=DataAccess.DaxxContext;Trusted_Connection=True;MultipleActiveResultSets=true"
+            "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=DaxxDatabase;Trusted_Connection=True;MultipleActiveResultSets=true"
         }
     },
     "EntityFramework": {
-        "DaxxContext": {
+        "MoviesAppContext": {
             "ConnectionStringKey": "Data:DefaultConnection:ConnectionString"
         }
     }
