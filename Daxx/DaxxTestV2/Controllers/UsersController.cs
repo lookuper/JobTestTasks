@@ -33,6 +33,11 @@ namespace DaxxTestV2.Controllers
             return this.Ok();
         }
 
+        public IHttpActionResult Countries()
+        {
+            return this.Ok(model.Countries);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

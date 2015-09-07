@@ -10,8 +10,6 @@ namespace DaxxTestV2.Controllers
 {
     public class HomeController : Controller
     {
-        IDaxxModel model = new DaxxSqlDbModel();
-
         public ActionResult Index()
         {
             return View();
