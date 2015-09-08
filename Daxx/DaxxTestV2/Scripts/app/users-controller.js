@@ -22,23 +22,17 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	$locationProvider.html5Mode(true); 
 }]);
 
-app.controller('DaxxCtrl', function ($scope, $http) {
+app.controller('DaxxCtrl', function ($scope, $http, $log) {
 		
-		$http.get("/api/users").success(function (data, status, headers, config) {
-				$scope.testUser = data[0];
-				$scope.user.selectedCountry = $scope.testUser.location;
-				$scope.user.selectedCountry.provinces = $scope.testUser.location.provinces;
-			});
+		$http.get("/api/country").success(function (data, status, headers, config) {
+			$scope.countries = data;
+		}).error(function (data, status, headers, config) {
+			$log(data);			
+		});
 
 		$scope.user = {};
 		$scope.user.email = 2 +2 ;	
 		$scope.user.agreement = false;
-
-		$scope.countries = ['Blue',
-			'Red',
-			'Pink',
-			'Purple',
-			'Green'];
 
 		$scope.user.selectedCountry = {};
 		$scope.user.selectedProvince = {};
@@ -47,7 +41,29 @@ app.controller('DaxxCtrl', function ($scope, $http) {
 		$scope.testUser = '';
 		
 		$scope.save = function() {
-			var i = 4;
+			var userDto = {
+				'Id' : '0',
+				'Login' : $scope.user.email,
+				'Password' : $scope.user.password,
+				'AgreeToWorkForFood' : $scope.user.agreement,
+				'CountryId' : $scope.user.selectedCountry.id,
+				'ProvinceId' : $scope.user.selectedProvince.id
+			};
+
+			$http.post('/api/users',
+			    to,
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+			).success(function (data, status, headers, config) {
+				$scope.correctAnswer = (data === "true");
+				$scope.working = false;
+			}).error(function (data, status, headers, config) {
+				$scope.title = "Oops... something went wrong";
+				$scope.working = false;
+			});
 		};
 
 		$scope.next = function () {

@@ -23,7 +23,9 @@ namespace Model
             Mapper.CreateMap<ProvinceDto, Province>();
             Mapper.CreateMap<Country, CountryDto>();
             Mapper.CreateMap<CountryDto, Country>();
-            Mapper.CreateMap<User, UserDto>();
+            Mapper.CreateMap<User, UserDto>()
+                .ForMember(x => x.CountryId, opt => opt.Ignore())
+                .ForMember(x => x.ProvinceId, opt => opt.Ignore());
             Mapper.CreateMap<UserDto, User>();
 
             Mapper.AssertConfigurationIsValid();

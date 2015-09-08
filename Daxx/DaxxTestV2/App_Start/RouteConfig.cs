@@ -13,23 +13,28 @@ namespace DaxxTestV2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "UsersApi",
+                url: "users/{controller}/{action}",
+                defaults: new { action = "Get" }
+);
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
             //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //     name: "DefaultViews",
+            //     url: "view/{controller}/{action}/{id}",
+            //     defaults: new { id = UrlParameter.Optional }
             //);
-            routes.MapRoute(
-                 name: "DefaultViews",
-                 url: "view/{controller}/{action}/{id}",
-                 defaults: new { id = UrlParameter.Optional }
-            );
 
-            // Home Index page have ng-app
-            routes.MapRoute(
-                name: "AngularApp",
-                url: "{*.}",
-                defaults: new { controller = "Home", action = "Index" }
-            );
+            //// Home Index page have ng-app
+            //routes.MapRoute(
+            //    name: "AngularApp",
+            //    url: "{*.}",
+            //    defaults: new { controller = "Home", action = "Index" }
+            //);
         }
     }
 }

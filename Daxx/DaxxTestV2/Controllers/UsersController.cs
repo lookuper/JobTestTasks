@@ -23,6 +23,7 @@ namespace DaxxTestV2.Controllers
             return this.Ok(model.Users);
         }
 
+        [HttpPost]
         public IHttpActionResult Post(UserDto newUser)
         {
             if (!ModelState.IsValid)
@@ -31,11 +32,6 @@ namespace DaxxTestV2.Controllers
             model.AddUser(newUser);
 
             return this.Ok();
-        }
-
-        public IHttpActionResult Countries()
-        {
-            return this.Ok(model.Countries);
         }
 
         protected override void Dispose(bool disposing)

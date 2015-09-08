@@ -14,5 +14,8 @@ namespace CommonTypes.DTO
         public String Password { get; set; }
         public bool AgreeToWorkForFood { get; set; }
         public CountryDto Location { get; set; }
+
+        public int CountryId { get; set; }
+        public int ProvinceId { get; set; }
     }
 }

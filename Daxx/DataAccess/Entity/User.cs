@@ -22,7 +22,8 @@ namespace DataAccess.Entity
         [Required]
         public bool AgreeToWorkForFood { get; set; }
 
-        public Country Location { get; set; }
+        public Country Country { get; set; }
+        public Province Province { get; set; }
 
         public User()
         {
