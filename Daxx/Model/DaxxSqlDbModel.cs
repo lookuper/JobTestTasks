@@ -24,9 +24,12 @@ namespace Model
             Mapper.CreateMap<Country, CountryDto>();
             Mapper.CreateMap<CountryDto, Country>();
             Mapper.CreateMap<User, UserDto>()
+                .ForMember(x => x.Location, opt => opt.Ignore())
                 .ForMember(x => x.CountryId, opt => opt.Ignore())
                 .ForMember(x => x.ProvinceId, opt => opt.Ignore());
-            Mapper.CreateMap<UserDto, User>();
+            Mapper.CreateMap<UserDto, User>()
+                .ForMember(x => x.Country, opt => opt.Ignore())
+                .ForMember(x => x.Province, opt => opt.Ignore());
 
             Mapper.AssertConfigurationIsValid();
         }
@@ -58,20 +61,11 @@ namespace Model
         public void AddUser(UserDto newUser)
         {
             var user = Mapper.Map<User>(newUser);
+            user.Country = unit.CountryRepository.GetQueryable().First(c => c.Id == newUser.CountryId);
+            user.Province = user.Country.Provinces.First(p => p.Id == newUser.ProvinceId);
+
             unit.UserRepository.Insert(user);
             unit.Save();
-        }
-
-        public void AddUser(string login, SecureString password, CountryDto location, bool agreement)
-        {
-            var mappedLocation = Mapper.Map<Country>(location);
-            new User
-            {
-                Login = login,
-                Password = password.ToString(),
-                Location = mappedLocation,
-                AgreeToWorkForFood = agreement,
-            };
         }
 
         public bool UserExists(string login)

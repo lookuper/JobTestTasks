@@ -31,7 +31,8 @@ app.controller('DaxxCtrl', function ($scope, $http, $log) {
 		});
 
 		$scope.user = {};
-		$scope.user.email = 2 +2 ;	
+		$scope.user.email = 2 + 2 ;	
+		$scope.user.password = 'testpass';
 		$scope.user.agreement = false;
 
 		$scope.user.selectedCountry = {};
@@ -41,6 +42,7 @@ app.controller('DaxxCtrl', function ($scope, $http, $log) {
 		$scope.testUser = '';
 		
 		$scope.save = function() {
+			var i = 5;
 			var userDto = {
 				'Id' : '0',
 				'Login' : $scope.user.email,
@@ -51,7 +53,7 @@ app.controller('DaxxCtrl', function ($scope, $http, $log) {
 			};
 
 			$http.post('/api/users',
-			    to,
+			    userDto,
                 {
                     headers: {
                         'Content-Type': 'application/json'

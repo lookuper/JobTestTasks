@@ -15,14 +15,12 @@ namespace DataAccess
         public DbSet<Country> Countries { get; set; }
         public DbSet<Province> Provincies { get; set; }
 
-        public DaxxContext() : base("name=DaxxContext")
-        {
-            Database.SetInitializer<DaxxContext>(new CreateDatabaseIfNotExists<DaxxContext>());
-        }
+        public DaxxContext() : base("name=DaxxContext") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -34,12 +34,14 @@ namespace DataAccess
 
             var users = new List<User>
             {
-                new User {Login="User1", Password="pass1", AgreeToWorkForFood=false, Location = countries.First() },
-                new User {Login="User2", Password="pass2", AgreeToWorkForFood=true, Location = countries.Last() },
+                new User {Login="User1", Password="pass1", AgreeToWorkForFood=false, Country = countries.First(), Province = countries.First().Provinces.First() },
+                new User {Login="User2", Password="pass2", AgreeToWorkForFood=true, Country = countries.Last(), Province = countries.Last().Provinces.Last() },
             };
 
             context.Users.AddRange(users);
             context.SaveChanges();
+
+            base.Seed(context);
         }
     }
 }

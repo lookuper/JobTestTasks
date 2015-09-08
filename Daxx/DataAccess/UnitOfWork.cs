@@ -45,7 +45,14 @@ namespace DataAccess
 
         public void Save()
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch(ApplicationException ex)
+            {
+                throw;
+            }
         }
 
         protected virtual void Dispose(bool disposing)

@@ -15,7 +15,7 @@ namespace DaxxTestV2
     {
         protected void Application_Start()
         {
-            System.Data.Entity.Database.SetInitializer(new DaxxInitializer());            
+            System.Data.Entity.Database.SetInitializer<DaxxContext>(new DaxxInitializer());
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
