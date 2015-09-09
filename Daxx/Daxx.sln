@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaxxTestV2", "DaxxTestV2\DaxxTestV2.csproj", "{8250B901-F018-444F-BA83-E7FCD96F5A14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularStart", "AngularStart\AngularStart.csproj", "{9B8BF380-7F42-4F02-8107-2C03CA88527C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8250B901-F018-444F-BA83-E7FCD96F5A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B8BF380-7F42-4F02-8107-2C03CA88527C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B8BF380-7F42-4F02-8107-2C03CA88527C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B8BF380-7F42-4F02-8107-2C03CA88527C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B8BF380-7F42-4F02-8107-2C03CA88527C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

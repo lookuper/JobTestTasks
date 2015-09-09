@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+}
+
+<h2>Avalibale Users</h2>
+<div class="list-group">
+    <!-- Links to detail level -->
+    <ul ng-repeat="user in avaliableUsers"> 
+        <li class="list-group-item">{{ user.login }}</li>
+    </ul>
+</div>

@@ -1,26 +1,18 @@
-﻿var app = angular.module('DaxxApp', ['ngRoute', 'ngComboBox']);
+﻿var app = angular.module('DaxxApp', ['ngRoute']);
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-	$routeProvider
-		.when('/', {
-			templateUrl: '/Views/list.html',
-			controller: 'MoviesListController'
-		})
-		.when('/movies/add', {
-			templateUrl: '/Views/add.html',
-			controller: 'MoviesAddController'
-		})
-		.when('/movies/edit/:id', {
-			templateUrl: '/Views/edit.html',
-			controller: 'MoviesEditController'
-		})
-		.when('/movies/delete/:id', {
-			templateUrl: '/Views/delete.html',
-			controller: 'MoviesDeleteController'
-		});
- 
-	$locationProvider.html5Mode(true); 
+app.config(['$routeProvider', function ($routeProvider) {
+    //Setup routes to load partial templates from server. TemplateUrl is the location for the server view (Razor .cshtml view)
+    $routeProvider
+        .when('/home', { templateUrl: '/home/firstpage', controller: 'DaxxCtrl' })
+        .when('/demo', { templateUrl: '/home/demo', controller: 'DaxxCtrl' })
+        .otherwise({ redirectTo: '/home' });
 }]);
+
+app.controller('RootController', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
+        $scope.$on('$routeChangeSuccess', function (e, current, previous) {
+            $scope.activeViewPath = $location.path();
+        });
+    }]);
 
 app.controller('DaxxCtrl', function ($scope, $http, $log) {
 		
