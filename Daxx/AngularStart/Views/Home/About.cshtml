@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+<h2>About Angular Start</h2>
+<form name="regForm" class="registration" role="form" accept-charset="utf-8" ng-controller="DaxxCtrl2">
+    <div class="form-group" ng-class="{ 'has-error' : regForm.country.$invalid }">
+        <label>Country</label>
+        <select ng-model="user.selectedCountry" class="form-control" name="country" required
+                ng-options="c.name for c in countries">
+            <option selected disabled value="">  Select Country  </option>
+        </select>
+        <p class="error" ng-show="regForm.country.$dirty && regForm.country.$invalid">Country is required field</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : regForm.province.$invalid }">
+        <label>Province</label>
+        <select ng-model="user.selectedProvince" class="form-control"  name="province" required
+                ng-options="i.name for i in user.selectedCountry.provinces">
+            <option selected disabled value="">Please select country first</option>
+        </select>
+        <p class="error" ng-show="regForm.province.$dirty && regForm.province.$invalid">Province is required field</p>
+    </div>
+
+    <button type="button" class="btn btn-lg btn-primary btn-block" ng-disabled="regForm.$invalid" ng-click="save()">Save</button>
+</form>

@@ -1,15 +1,13 @@
 ﻿// Main configuration file. Sets up AngularJS module and routes and any other config objects
 
-var appRoot = angular.module('main', ['ngRoute', 'ngGrid', 'ngResource', 'angularStart.services', 'angularStart.directives']);     //Define the main module
+var appRoot = angular.module('main', ['ngRoute', 'ngGrid', 'ngResource']);     //Define the main module
 
 appRoot.config(['$routeProvider', function ($routeProvider) {
         //Setup routes to load partial templates from server. TemplateUrl is the location for the server view (Razor .cshtml view)
         $routeProvider
             .when('/home', { templateUrl: '/home/main', controller: 'DaxxCtrl' })
-            .when('/contact', { templateUrl: '/home/contact', controller: 'ContactController' })
             .when('/about:user', { templateUrl: '/home/about', controller: 'DaxxCtrl2' })
             .when('/demo', { templateUrl: '/home/demo', controller: 'DemoController2' })
-            .when('/angular', { templateUrl: '/home/angular' })
             .otherwise({ redirectTo: '/home' });
     }])
     .controller('RootController', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
@@ -87,10 +85,10 @@ appRoot.controller('DaxxCtrl2', function ($scope, $http, $location, $route, $rou
 
 appRoot.controller('DaxxCtrl', function ($scope, $http, $location, $route, $routeParams) {
 	$scope.user = {};
-	$scope.user.email = 'test@test.com' ;	
-	$scope.user.password = 'testpass';
-	$scope.user.passwordConfirm = $scope.user.password;
-	$scope.user.agreement = true;
+	$scope.user.email = '';	
+	$scope.user.password = '';
+	$scope.user.passwordConfirm = '';
+	$scope.user.agreement = false;
 
 	$scope.user.selectedCountry = {};
 	$scope.user.selectedProvince = {};
