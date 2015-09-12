@@ -25,3 +25,31 @@ The job must be done with the maximum use of the OOP. The essence of the job is 
 * List each words in a particular file (+ paging)
 
 Database MSSQL, unit tests must be present. The database must be created script - this in order that it can be easily recreated on checking tests, or shall be accompanied bak base.
+
+---
+####Daxx:
+
+You need to create a simple web page which should contain a registration wizard. The registration wizard
+contains two steps:
+
+#####Step 1: (all fields are required)
+* Login valid email.
+* Password must contain min 1 digit and min 1 letter.
+* Confirm password must be the same with the field “password”.
+* I agree checkbox is a required checkbox.
+* Button next should validate all fields on the step and show validation errors (under the fields) or go to next step.
+
+#####Step 2: (all fields are required)
+* Country drop down list which contains list of counties.
+* Province contains list of provinces for selected country. The list of provinces should be loaded by AJAX if country is  changed.
+* Button save should should validate all fields on the step and show validation errors (under the fields) or save the data from the wizard to the database using AJAX call.
+
+#####Tech requirements:
+* Use ASP.NET MVC + ASP.NET MVC WebAPI as platform 
+* Use client side MVVM framework (KnockoutJS, AngularJS, etc.)
+* Use Bootstrap as design framework
+* Use MS SQL (localDb) and Entity Framework + Migrations as DB and ORM
+* The result should be presented as working Visual Studio solution / project. Run F5 to get working.
+* Beside this, feel free to choose any other libraries, frameworks, patterns, test (fake) data, etc. For example you database with country/province can contain only 2 test countries and 23 test provinces for each country (Country 1, Province 1.1, Province 1.2, is also okay). 
+
+If you miss some information, do not ask do it in the way you think it should be done correctly .
