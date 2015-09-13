@@ -52,4 +52,35 @@ contains two steps:
 * The result should be presented as working Visual Studio solution / project. Run F5 to get working.
 * Beside this, feel free to choose any other libraries, frameworks, patterns, test (fake) data, etc. For example you database with country/province can contain only 2 test countries and 23 test provinces for each country (Country 1, Province 1.1, Province 1.2, is also okay). 
 
-If you miss some information, do not ask do it in the way you think it should be done correctly .
+If you miss some information, do not ask do it in the way you think it should be done correctly.
+
+---
+####Login VSI:
+The product is a bike and the price is dependent on the price of its parts. For this exercise, not all parts of a bike are used. Time - 2 hours. 
+
+The parts used for the calculation are:
+* Front Wheel
+* Back Wheel
+* Handle bar
+* Seat
+* Frame
+ 
+In the UI, the price of each item is an input. With every change in price the total price (sum of the prices of each item) should be updated.
+ 
+Please deliver a version at the end of each part. So finish part 1 first and deliver it. If you cannot finish part 2 or 3 I’d at least have part 1.
+
+#####Part 1: Deliver a working version of the application.
+* You can choose to make it in any technology you prefer: (Web-based – MVC5 or desktop – WinForms or WPF).
+* There is no need to provide a persistence mechanism. No need for a database or a file storage.
+
+#####Part 2: Quality improvements.
+*  Add code comments.
+* Add Test Units.
+
+#####Part 3: Refactoring
+* Refactor the application to use ViewModels.
+* Move models to another class library.
+* Fix namespacing for production.
+ 
+#####Part 4: Paradigm shift
+* Implement the MVVM paradigm (client-side MVVM for web-based and MVVM for WPF).
