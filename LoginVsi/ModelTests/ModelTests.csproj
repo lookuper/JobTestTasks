@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonTypes\CommonTypes.csproj">
+      <Project>{4b4b5f6a-1abb-4bcb-8919-4797ce541157}</Project>
+      <Name>CommonTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{768BD2E0-717D-4A41-BF3C-39709AD39DB9}</Project>
       <Name>Model</Name>

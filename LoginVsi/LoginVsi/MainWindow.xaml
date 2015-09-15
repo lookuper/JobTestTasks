@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="BikeParts" Grid.Row="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="90" Content="{Binding Name}"/>
+                        <TextBox Width="200" TextChanged="TextBox_TextChanged"
+                                 PreviewTextInput="TextBox_PreviewTextInput"
+                                 Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"  />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label  Content="Total Price:" />
+            <Label Content="{Binding TotalPrice}"/>
+        </StackPanel>
     </Grid>
 </Window>
