@@ -11,33 +11,90 @@
     </Window.DataContext>
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="25" >
-            <DockPanel VerticalAlignment="Stretch">
-                <TextBlock Text="Duplicates: " DockPanel.Dock="Left"/>
-                <TextBlock Text="{Binding DuplicatesCount}" DockPanel.Dock="Left"/>
-                <TextBlock Text="{Binding Time, StringFormat='{}{0:hh\\:mm\\:ss}'}" DockPanel.Dock="Right" IsEnabled="False"/>
-                <TextBlock Text="Time: " DockPanel.Dock="Right"/>               
-                <Label></Label>
-            </DockPanel>
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".8*"/>
+                            <ColumnDefinition Width=".2*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Files: " DockPanel.Dock="Left"/>
+                    <TextBlock Text="{Binding FilesCount}" DockPanel.Dock="Left"/>
+                    <Label></Label>
+                    <TextBlock Text="Duplicates: " DockPanel.Dock="Left"/>
+                    <TextBlock Text="{Binding DuplicatesCount}" DockPanel.Dock="Left"/>
+                    <Label></Label>
+                </DockPanel>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <ProgressBar HorizontalAlignment="Stretch" Height="15" Visibility="{Binding ProgressVisible}" IsIndeterminate="True" DockPanel.Dock="Right" Width="100"></ProgressBar>
+            </StatusBarItem>
+            
+            
+
+
+
         </StatusBar>
 
         <DockPanel>
-            <GroupBox Header="Folder selection" DockPanel.Dock="Top" VerticalAlignment="Top" Margin="1" Height="60">
-                <DockPanel>
-                    <Label Content="Path: " DockPanel.Dock="Left" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Button Content="Select Folder" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Right" Command="{Binding SelectFolderCommand}" />
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                        <TextBlock Text="{Binding SelectedPath}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
-                    </ScrollViewer>
-                </DockPanel>
+            <GroupBox Header="Folder selection" DockPanel.Dock="Top" VerticalAlignment="Top" Margin="1">
+                <StackPanel>
+                    <DockPanel>
+                        <Label Content="Path: " DockPanel.Dock="Left" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Content="Select Folder" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Right" Command="{Binding SelectFolderCommand}" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <TextBlock Text="{Binding SelectedPath}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
+                        </ScrollViewer>
+                    </DockPanel>
+                    <ComboBox Margin="1" ItemsSource="{Binding AvaliableComparers}"
+                              SelectedItem="{Binding SelectedComparer}"
+                              IsSynchronizedWithCurrentItem="True"
+                              DisplayMemberPath="Name"
+                              >
+
+                    </ComboBox>
+                </StackPanel>
             </GroupBox>
             <GroupBox Header="Result" DockPanel.Dock="Bottom" Margin="1">
-                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".7*"/>
+                        <ColumnDefinition Width=".3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Duplicates: " Grid.Column="0">
+                        <ListView ItemsSource="{Binding Duplicates}" BorderBrush="White" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ListView ItemsSource="{Binding}" Margin="1" Padding="1">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding Name}"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </GroupBox>
+
+                    <GroupBox Header="Blocked Files: " Grid.Column="1">
+                        <ListView ItemsSource="{Binding BlockedFiles}" BorderBrush="White">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </GroupBox>
+                </Grid>
+
             </GroupBox>
         </DockPanel>
-
-
-
-
-
     </DockPanel>
 </Window>
