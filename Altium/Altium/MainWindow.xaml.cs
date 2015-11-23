@@ -23,6 +23,15 @@ namespace Altium
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = (Exception) e.ExceptionObject;
+            MessageBox.Show(ex.Message, String.Format("Runtime terminating: {0}", e.IsTerminating), MessageBoxButton.OK, MessageBoxImage.Error);        
         }
     }
 }

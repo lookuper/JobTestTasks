@@ -10,7 +10,9 @@ namespace CoreServices
 {
     public class DuplicatesController
     {
+        private readonly Object _lock = new Object();
         private IFilesComparer _comparer;
+
         public String FolderPath { get; private set; }
         public List<FileInfo> Files { get; private set; }
         public List<FileInfo> LockedFiles { get; private set; }
@@ -50,18 +52,25 @@ namespace CoreServices
             var folderPermission = new FileIOPermission(FileIOPermissionAccess.Read, FolderPath);
             folderPermission.Demand();
 
-            foreach (var fileName in Directory.GetFiles(FolderPath))
+            Parallel.ForEach(Directory.GetFiles(FolderPath), fileName =>
             {
                 try
                 {
                     using (var stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read)) ;
-                    Files.Add(new FileInfo(fileName));
+
+                    lock (_lock)
+                    {
+                        Files.Add(new FileInfo(fileName));
+                    }
                 }
                 catch (IOException)
                 {
-                    LockedFiles.Add(new FileInfo(fileName));
+                    lock (_lock)
+                    {
+                        LockedFiles.Add(new FileInfo(fileName));
+                    }
                 }
-            }
+            });
         }
     }
 }

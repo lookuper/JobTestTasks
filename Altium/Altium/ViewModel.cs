@@ -90,7 +90,6 @@ namespace Altium
             var dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                //SelectedPath = @"C:\test";
                 SelectedPath = dialog.SelectedPath;
                 ProgressVisible = Visibility.Visible;
                 model = new DuplicatesController(SelectedPath);
