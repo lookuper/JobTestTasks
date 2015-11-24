@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altium", "Altium\Altium.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServices", "CoreServices\CoreServices.csproj", "{5D3CD06D-DAFC-48BF-AFA1-3CEC02FFF985}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gif", "gif", "{5F1245E5-A643-4608-847D-D94E09D7945D}"
+	ProjectSection(SolutionItems) = preProject
+		gif\Animation.gif = gif\Animation.gif
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
