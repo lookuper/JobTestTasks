@@ -84,3 +84,10 @@ Please deliver a version at the end of each part. So finish part 1 first and del
  
 #####Part 4: Paradigm shift
 * Implement the MVVM paradigm (client-side MVVM for web-based and MVVM for WPF).
+
+---
+####Altium:
+Find duplicate files by content. Implement the most fastest way, even for large files.
+
+Demo:
+![demo] (Altium/gif/Animation.gif)
