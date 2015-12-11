@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Actum.DataAccess
 {
-    public class ActumInitializer : DropCreateDatabaseAlways<ActumContext> // CreateDatabaseIfNotExists<ActumContext>
+    public class ActumInitializer : DropCreateDatabaseAlways<ActumContext> // delete init is for testing, for other cases use CreateDatabaseIfNotExists<ActumContext>
     {
         protected override void Seed(ActumContext context)
         {

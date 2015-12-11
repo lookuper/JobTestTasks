@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ActumContext.cs" />
     <Compile Include="ActumInitializer.cs" />
+    <Compile Include="ActumModel.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Training.cs" />
     <Compile Include="Entities\TrainingVisits.cs" />
