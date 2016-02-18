@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.DataAccess", "Arvato.DataAccess\Arvato.DataAccess.csproj", "{11D8DC61-6CF7-42A0-9B8A-4BD53B3CD0BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.BusinessLogic", "Arvato.BusinessLogic\Arvato.BusinessLogic.csproj", "{ECF9988C-D079-4C6A-8C8E-7E5829B6DEF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Common", "Arvato.Common\Arvato.Common.csproj", "{A9B0C9AD-B32E-4AEB-86E1-44AA00EB4969}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11D8DC61-6CF7-42A0-9B8A-4BD53B3CD0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D8DC61-6CF7-42A0-9B8A-4BD53B3CD0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D8DC61-6CF7-42A0-9B8A-4BD53B3CD0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D8DC61-6CF7-42A0-9B8A-4BD53B3CD0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF9988C-D079-4C6A-8C8E-7E5829B6DEF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF9988C-D079-4C6A-8C8E-7E5829B6DEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF9988C-D079-4C6A-8C8E-7E5829B6DEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF9988C-D079-4C6A-8C8E-7E5829B6DEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B0C9AD-B32E-4AEB-86E1-44AA00EB4969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B0C9AD-B32E-4AEB-86E1-44AA00EB4969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B0C9AD-B32E-4AEB-86E1-44AA00EB4969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B0C9AD-B32E-4AEB-86E1-44AA00EB4969}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
