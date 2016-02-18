@@ -91,3 +91,22 @@ Find duplicate files by content. Implement the most fastest way, even for large 
 
 Demo:
 ![demo] (Altium/gif/Animation.gif)
+
+---
+####Actum:
+This test should take approximately 60 minutes. If you need a bit longer, it is ok but please
+let us know how much time you spent on it.
+
+Objects:
+* Employee – properties are name, surname, birthdate
+* Training – properties are name, description
+
+Use case:
+* Each employee can attend more than one training.
+* Each employee can attend each training more than once.
+
+Output:
+* Create classes for Employee and Training.
+* Write methods for one of them to insert and update record in the database. You have the stored procedures in the database that takes care about the database logic. You do not have to write the SQL scripts, just call the stored procedures.
+* Design the connection between the employee and the trainings he or she attended.
+* Write a method which returns a list of last visits of each training of a specific employee.
