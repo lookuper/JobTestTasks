@@ -8,7 +8,8 @@ namespace Arvato.Common
 {
     public class PremiumCustomer : Customer
     {
-        public PremiumCustomer()
+        public PremiumCustomer(String carNumber, String firstName = null, String lastName = null, AbstractParkingPrices prices = null)
+            : base(carNumber, firstName, lastName, prices)
         {
             IsPremiumCustomer = true;
         }

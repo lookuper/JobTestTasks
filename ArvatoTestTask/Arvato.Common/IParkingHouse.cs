@@ -12,8 +12,9 @@ namespace Arvato.Common
 
         void SetParkingPrices(AbstractParkingPrices prices);
 
+        void AddPremiumCustomer(String carNumber, String firstName, String lastName);
         void CarEnters(String carNumber);
-        void CarLeave(String number);
+        void CarLeave(String carNumber);
 
         void GetInvoiceForCustomer(String carNumber);
         void GetAllInvoices();

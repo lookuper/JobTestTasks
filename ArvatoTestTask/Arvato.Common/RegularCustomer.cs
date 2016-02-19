@@ -8,7 +8,8 @@ namespace Arvato.Common
 {
     public class RegularCustomer : Customer
     {
-        public RegularCustomer()
+        public RegularCustomer(String carNumber, String firstName = null, String lastName = null, AbstractParkingPrices prices = null) 
+            : base(carNumber, firstName, lastName, prices)
         {
             IsPremiumCustomer = false;
         }

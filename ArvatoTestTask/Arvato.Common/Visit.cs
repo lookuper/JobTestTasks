@@ -8,29 +8,32 @@ namespace Arvato.Common
 {
     public class Visit
     {
+        public Customer Customer { get; set; }
         public String CarNumber { get; set; }
         public DateTime EnterTime { get; set; }
-        public DateTime? LeaveTime { get; set; }
+        public DateTime LeaveTime { get; set; }
+        public double ToPay { get; set; }
+        public List<String> Log { get; set; }
 
-        public Visit(String carNumber)
+        [Obsolete("Just for testing purposes")]
+        public Visit() : this(null)
         {
-            CarNumber = carNumber;
+
+        }
+
+        public Visit(Customer customer)
+        {
+            Customer = customer;
             EnterTime = DateTime.Now;
-            LeaveTime = null;
+            //LeaveTime = DateTime.Now;
+            ToPay = 0;
+            Log = new List<string>();
         }
 
         public void CarLeave()
         {
             LeaveTime = DateTime.Now;
-        }
-
-        public int CalculateVisitTimeInMinutes()
-        {
-            if (LeaveTime == null)
-                throw new InvalidOperationException("Cannot calculate time because car still not leave parking");
-
-            var time = LeaveTime.Value.Subtract(EnterTime);
-            return time.Minutes;
+            ToPay = Customer.CustomerPrices.CalculateVisitPrice(Customer, this);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arvato.Common
 {
-    public class AbstractParkingPrices
+    public abstract class AbstractParkingPrices
     {
         public double MontleyFeeRegular { get; protected set; }
         public double MontleyFeePremium { get; protected set; }
@@ -21,11 +21,6 @@ namespace Arvato.Common
 
         public int BusinessHourStart { get; protected set; }
         public int BusinessHourEnd { get; protected set; }
-
-        public static AbstractParkingPrices Default
-        {
-            get { return new AbstractParkingPrices(); }
-        }
 
         public AbstractParkingPrices()
         {
@@ -43,5 +38,7 @@ namespace Arvato.Common
             BusinessHourStart = 7; //07:00
             BusinessHourEnd = 19; // 19:00
         }
+
+        public abstract double CalculateVisitPrice(Customer customer, Visit visit);
     }
 }

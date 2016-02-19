@@ -9,6 +9,22 @@ namespace Arvato.DataAccess
 {
     public class SimpleDataModel
     {
+        public static DateTime StartTimeBusiness
+        {
+            get
+            {
+                return new DateTime(2016, 2, 18).AddHours(11);
+            }
+        }
+
+        public static DateTime StartTimeRegular
+        {
+            get
+            {
+                return new DateTime(2016, 2, 18).AddHours(20);
+            }
+        }
+
         public static List<Customer> AllCustomers
         {
             get
@@ -24,17 +40,13 @@ namespace Arvato.DataAccess
                 var now = DateTime.Now;
                 var visitsReg = new List<Visit>()
                 {
-                    new Visit("1-1") {EnterTime = now, LeaveTime = now.AddMinutes(29) },
-                    new Visit("1-1") {EnterTime = now, LeaveTime = now.AddHours(3).AddMinutes(12) },
-                    new Visit("1-1") {EnterTime = now, LeaveTime = now.AddDays(2).AddHours(3).AddMinutes(12) },
+                    new Visit() {EnterTime = now, LeaveTime = now.AddMinutes(29) },
+                    new Visit() {EnterTime = StartTimeRegular, LeaveTime = StartTimeRegular.AddHours(3).AddMinutes(30) },
+                    new Visit() {EnterTime = StartTimeBusiness, LeaveTime = StartTimeBusiness.AddHours(3).AddMinutes(12) },
+                    new Visit() {EnterTime = StartTimeBusiness, LeaveTime = StartTimeBusiness.AddDays(2).AddHours(3).AddMinutes(12) },
                 };
 
-                var customer = new RegularCustomer
-                {
-                    FirstName = "User",
-                    LastName = "1",
-                    CarNumber = "1-1",
-                };
+                var customer = new RegularCustomer(carNumber: "1-1");
 
                 customer.CustomerVisits.AddRange(visitsReg);
 
@@ -49,17 +61,12 @@ namespace Arvato.DataAccess
                 var now = DateTime.Now;
                 var visitsReg = new List<Visit>()
                 {
-                    new Visit("1") {EnterTime = now, LeaveTime = now.AddMinutes(29) },
-                    new Visit("1") {EnterTime = now, LeaveTime = now.AddHours(3).AddMinutes(12) },
-                    new Visit("1") {EnterTime = now, LeaveTime = now.AddDays(2).AddHours(3).AddMinutes(12) },
+                    new Visit() {EnterTime = now, LeaveTime = now.AddMinutes(29) },
+                    new Visit() {EnterTime = now, LeaveTime = now.AddHours(3).AddMinutes(12) },
+                    new Visit() {EnterTime = now, LeaveTime = now.AddDays(2).AddHours(3).AddMinutes(12) },
                 };
 
-                var customer = new PremiumCustomer
-                {
-                    FirstName = "User",
-                    LastName = "1",
-                    CarNumber = "1",
-                };
+                var customer = new PremiumCustomer("1");               
 
                 customer.CustomerVisits.AddRange(visitsReg);
 

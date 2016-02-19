@@ -14,10 +14,15 @@ namespace Arvato.Common
         public String CarNumber { get; set; }
 
         public bool IsPremiumCustomer { get; protected set; }
-        public List<Visit> CustomerVisits { get; protected set; }
+        public List<Visit> CustomerVisits { get; set; }
+        public AbstractParkingPrices CustomerPrices { get; set; }
 
-        public Customer()
+        public Customer(String carNumber, String firstName = null, String lastName = null, AbstractParkingPrices prices = null)
         {
+            CarNumber = carNumber;
+            FirstName = firstName;
+            LastName = lastName;
+            CustomerPrices = prices;
             CustomerVisits = new List<Visit>();
         }
     }
