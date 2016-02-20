@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultParingHouse.cs" />
+    <Compile Include="ParkingController.cs" />
     <Compile Include="ParkingPrices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

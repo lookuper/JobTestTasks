@@ -25,7 +25,7 @@ namespace Arvato.Common
         {
             Customer = customer;
             EnterTime = DateTime.Now;
-            //LeaveTime = DateTime.Now;
+            LeaveTime = DateTime.MinValue;
             ToPay = 0;
             Log = new List<string>();
         }

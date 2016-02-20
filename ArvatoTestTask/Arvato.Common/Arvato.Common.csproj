@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="AbstractParkingPrices.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="IParkingHouse.cs" />
+    <Compile Include="MothsEnum.cs" />
     <Compile Include="PremiumCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularCustomer.cs" />

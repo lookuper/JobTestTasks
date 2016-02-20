@@ -13,9 +13,9 @@ namespace Arvato.BusinessLogic
         public AbstractParkingPrices CurrentPrices { get; private set; }
         public Dictionary<String, Customer> AllVisits = new Dictionary<string, Customer>();
 
-        public DefaultParingHouse(ParkingPrices prices = null)
+        public DefaultParingHouse(AbstractParkingPrices prices = null)
         {
-            CurrentPrices = prices ?? new ParkingPrices();
+            CurrentPrices = prices;
             foreach (var user in SimpleDataModel.AllCustomers)
             {
                 AllVisits.Add(user.CarNumber, user);
@@ -28,45 +28,69 @@ namespace Arvato.BusinessLogic
         }
 
         public void AddPremiumCustomer(String carNumber, String firstName, String lastName)
-        {
+        {          
+            if (AllVisits.ContainsKey(carNumber) && !AllVisits[carNumber].IsPremiumCustomer)
+                throw new InvalidOperationException("Such user already in database and its not a premium user, ability migration from regular to premium user would be avalibel in next version");
+
+            if (AllVisits.ContainsKey(carNumber))
+                throw new InvalidOperationException("Such user already registered");
+
             var newCustomer = new PremiumCustomer(carNumber, firstName, lastName, CurrentPrices);
             AllVisits.Add(carNumber, newCustomer);
             // store in db
+
         }
 
         public void CarEnters(String carNumber)
         {
-            var customer = AllVisits.ContainsKey(carNumber) ? AllVisits[carNumber] : new RegularCustomer(carNumber, null, null, CurrentPrices);
+            Customer customer;
+            if (!AllVisits.ContainsKey(carNumber))
+            {
+                customer = new RegularCustomer(carNumber, null, null, CurrentPrices);
+                AllVisits.Add(carNumber, customer);
+            }
+            else
+                customer = AllVisits[carNumber];                
+
+            if (customer.CustomerVisits.Any(v => v.LeaveTime == DateTime.MinValue))
+                throw new InvalidOperationException("Car already present inside parking");
+
             var visit = new Visit(customer);
             customer.CustomerVisits.Add(visit);
-            //AllVisits.Add(carNumber, customer);
         }
 
-        public void CarLeave(String number)
+        public Visit CarLeave(String number)
         {
             if (!AllVisits.ContainsKey(number))
                 throw new InvalidOperationException("Such car dont entered parking");
 
             var customer = AllVisits[number];
-            var lastVisit = customer.CustomerVisits.FirstOrDefault(v => v.LeaveTime == null);
-            if (lastVisit == null)
+            var currentVisit = customer.CustomerVisits.FirstOrDefault(v => v.LeaveTime == DateTime.MinValue);
+            if (currentVisit == null)
                 throw new InvalidOperationException("not properly entered car try to leave");
 
-            lastVisit.CarLeave();
-            CurrentPrices.CalculateVisitPrice(customer, lastVisit);
+            currentVisit.CarLeave();
+            currentVisit.ToPay = CurrentPrices.CalculateVisitPrice(customer, currentVisit);
+
+            return currentVisit;
         }
 
-        public void GetInvoiceForCustomer(String carNumber)
+        public List<Visit> GetCustomerVisits(String carNumber)
         {
+            if (!AllVisits.ContainsKey(carNumber))
+                throw new InvalidOperationException("Cannot find such car in database");
+
             var customer = AllVisits[carNumber];
-
-
-
-            var visits = AllVisits[carNumber];
-
+            return customer.CustomerVisits;
         }
 
-        public void GetAllInvoices()
-        { }
+        public List<Invoice> GetAllCustomersInvoicesForMonth(Moths month)
+        {
+            var customersInMonth = AllVisits.Values
+                .Where(c => c.CustomerVisits.Last().LeaveTime.Month == (int)month)
+                .ToList();
+
+            return customersInMonth.Select(c => c.GetInvoice(month)).ToList();
+        }
     }
 }

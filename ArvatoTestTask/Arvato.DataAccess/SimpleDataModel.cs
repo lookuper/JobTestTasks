@@ -37,7 +37,7 @@ namespace Arvato.DataAccess
         {
             get
             {
-                var now = DateTime.Now;
+                var now = new DateTime(2016, 2, 18);
                 var visitsReg = new List<Visit>()
                 {
                     new Visit() {EnterTime = now, LeaveTime = now.AddMinutes(29) },
