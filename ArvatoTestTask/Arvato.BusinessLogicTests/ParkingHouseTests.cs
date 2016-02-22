@@ -16,7 +16,7 @@ namespace Arvato.BusinessLogicTests
     public class ParkingHouseTests
     {
         static AbstractParkingPrices prices = new ParkingPrices();
-        static IParkingHouse parking = new DefaultParingHouse(prices);
+        static IParkingHouse parking = new DefaultParingHouse("", "", prices);
 
         [TestMethod]
         public void CarEntersTest()

@@ -41,12 +41,12 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Path: " DockPanel.Dock="Left" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Button Content="Select Folder" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Right" Command="{Binding SelectFolderCommand}" />
+                        <Button x:Name="sf" Content="Select Folder" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Right" Command="{Binding SelectFolderCommand}" />
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                             <TextBlock Text="{Binding SelectedPath}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1"/>
                         </ScrollViewer>
                     </DockPanel>
-                    <ComboBox Margin="1" ItemsSource="{Binding AvaliableComparers}"
+                    <ComboBox Name="AC" Margin="1" ItemsSource="{Binding AvaliableComparers}"
                               SelectedItem="{Binding SelectedComparer}"
                               IsSynchronizedWithCurrentItem="True"
                               DisplayMemberPath="Name">

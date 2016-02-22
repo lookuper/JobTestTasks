@@ -18,9 +18,7 @@ namespace Arvato.Common
 
         public bool IsPremiumCustomer { get; set; }
         public List<Visit> CustomerVisits { get; set; }
-        public AbstractParkingPrices CustomerPrices { get; set; }
-
-        
+        public AbstractParkingPrices CustomerPrices { get; set; }        
 
         public Customer(String carNumber, String firstName = null, String lastName = null, AbstractParkingPrices prices = null)
         {

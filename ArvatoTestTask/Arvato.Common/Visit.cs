@@ -35,5 +35,10 @@ namespace Arvato.Common
             LeaveTime = DateTime.Now;
             ToPay = Customer.CustomerPrices.CalculateVisitPrice(Customer, this);
         }
+
+        public override string ToString()
+        {
+            return String.Join(Environment.NewLine, Log);
+        }
     }
 }

@@ -11,10 +11,16 @@ namespace Arvato.BusinessLogic
     public class DefaultParingHouse : IParkingHouse
     {
         public AbstractParkingPrices CurrentPrices { get; private set; }
+
+        public string Name { get; set; }
+        public string Address { get; set; }
+
         public Dictionary<String, Customer> AllVisits = new Dictionary<string, Customer>();
 
-        public DefaultParingHouse(AbstractParkingPrices prices = null)
+        public DefaultParingHouse(String parkingName, String parkingAddress, AbstractParkingPrices prices = null)
         {
+            Name = parkingName;
+            Address = parkingAddress;
             CurrentPrices = prices;
             foreach (var user in SimpleDataModel.AllCustomers)
             {
@@ -73,6 +79,11 @@ namespace Arvato.BusinessLogic
             currentVisit.ToPay = CurrentPrices.CalculateVisitPrice(customer, currentVisit);
 
             return currentVisit;
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            return AllVisits.Values.ToList();
         }
 
         public List<Visit> GetCustomerVisits(String carNumber)

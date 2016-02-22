@@ -8,6 +8,9 @@ namespace Arvato.Common
 {
     public interface IParkingHouse
     {
+        String Name { get; set; }
+        String Address { get; set; }
+
         AbstractParkingPrices CurrentPrices { get; }
         void SetParkingPrices(AbstractParkingPrices prices);
 
@@ -15,6 +18,7 @@ namespace Arvato.Common
         void CarEnters(String carNumber);
         Visit CarLeave(String carNumber);
 
+        List<Customer> GetAllCustomers();
         List<Visit> GetCustomerVisits(String carNumber);
         List<Invoice> GetAllCustomersInvoicesForMonth(Moths month);
     }
