@@ -20,7 +20,6 @@ namespace Arvato.UI
             set { _allParkings = value; OnPropertyChanged("AllParkings"); }
         }
 
-
         private IParkingHouse _selectedParking = null;
         public IParkingHouse SelectedParking
         {
@@ -54,6 +53,34 @@ namespace Arvato.UI
             set { _selectedCustomer = value; OnPropertyChanged("SelectedCustomer"); }
         }
 
+        private Dictionary<Moths, String> _months;
+        public Dictionary<Moths, String> Months
+        {
+            get { return _months; }
+            set { _months = value; OnPropertyChanged("Months"); }
+        }
+
+        private Moths _selectedMonth;
+        public Moths SelectedMonth
+        {
+            get { return _selectedMonth; }
+            set { _selectedMonth = value; OnPropertyChanged("SelectedMonth"); }
+        }
+
+        private List<Invoice> _avaliableInvoices;
+        public List<Invoice> AvaliableInvoinces
+        {
+            get { return _avaliableInvoices; }
+            set { _avaliableInvoices = value; OnPropertyChanged("AvaliableInvoinces"); }
+        }
+
+        private Visit _selectedVisit;
+        public Visit SelectedVisit
+        {
+            get { return _selectedVisit; }
+            set { _selectedVisit = value; OnPropertyChanged("SelectedVisit"); }
+        }
+
         public ICommand GetCustomerVisitsCommand { get; set; }
 
         public MainViewModel()
@@ -61,11 +88,15 @@ namespace Arvato.UI
             AllParkings = _parkingController.AvaliableParking;
             SelectedParking = AllParkings.FirstOrDefault();
             GetCustomerVisitsCommand = new RelayCommand<Object>(GetCustomerVisitsHanler);
+
+            Months = Enum.GetValues(typeof(Moths))
+               .Cast<Moths>()
+               .ToDictionary(t => t, t => t.ToString());
         }
 
         private void GetCustomerVisitsHanler(object obj)
         {
-            throw new NotImplementedException();
+            AvaliableInvoinces = _parkingController.GetAllInvoicesForMonth(SelectedMonth);
         }
     }
 }

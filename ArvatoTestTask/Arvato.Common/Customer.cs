@@ -38,7 +38,7 @@ namespace Arvato.Common
                 .ToList();
 
             invoice.Month = forMonth;
-            invoice.Customer = $"{FirstName} {LastName}";
+            invoice.Customer = $"{FirstName} {LastName}, car number: '{CarNumber}'";
             invoice.Visits = monthVisits;
             invoice.Total = monthVisits.Sum(v => v.ToPay) + MonthlyFee;
 

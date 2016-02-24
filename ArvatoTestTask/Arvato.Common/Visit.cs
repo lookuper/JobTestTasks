@@ -36,6 +36,14 @@ namespace Arvato.Common
             ToPay = Customer.CustomerPrices.CalculateVisitPrice(Customer, this);
         }
 
+        public void RacalculatePrice()
+        {
+            if (EnterTime == DateTime.MinValue || LeaveTime == DateTime.MinValue)
+                throw new InvalidOperationException("Cannot calculate price");
+
+            ToPay = Customer.CustomerPrices.CalculateVisitPrice(Customer, this);
+        }
+
         public override string ToString()
         {
             return String.Join(Environment.NewLine, Log);

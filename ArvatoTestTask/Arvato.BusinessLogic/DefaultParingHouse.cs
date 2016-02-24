@@ -22,7 +22,7 @@ namespace Arvato.BusinessLogic
             Name = parkingName;
             Address = parkingAddress;
             CurrentPrices = prices;
-            foreach (var user in SimpleDataModel.AllCustomers)
+            foreach (var user in LetsSayRealDataModel.AllCustomers)
             {
                 AllVisits.Add(user.CarNumber, user);
             }

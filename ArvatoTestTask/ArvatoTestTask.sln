@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Common", "Arvato.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.BusinessLogicTests", "Arvato.BusinessLogicTests\Arvato.BusinessLogicTests.csproj", "{180F7063-7B4C-4A84-BD9E-922E5A825032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avarto.WebUI", "Avarto.Web\jQueryMvcVsAngularWebApiTodoList\Avarto.WebUI.csproj", "{4875B46D-A282-4FC4-861C-5A8A68DD375B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.UI", "Arvato.UI\Arvato.UI.csproj", "{B1C559EA-F976-498D-A2A4-D0FEDF582776}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{180F7063-7B4C-4A84-BD9E-922E5A825032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{180F7063-7B4C-4A84-BD9E-922E5A825032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{180F7063-7B4C-4A84-BD9E-922E5A825032}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4875B46D-A282-4FC4-861C-5A8A68DD375B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4875B46D-A282-4FC4-861C-5A8A68DD375B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4875B46D-A282-4FC4-861C-5A8A68DD375B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4875B46D-A282-4FC4-861C-5A8A68DD375B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1C559EA-F976-498D-A2A4-D0FEDF582776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1C559EA-F976-498D-A2A4-D0FEDF582776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C559EA-F976-498D-A2A4-D0FEDF582776}.Release|Any CPU.ActiveCfg = Release|Any CPU

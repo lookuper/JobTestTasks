@@ -6,64 +6,125 @@
         xmlns:local="clr-namespace:Arvato.UI"
         xmlns:common="clr-namespace:Arvato.Common;assembly=Arvato.Common"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Avarto Test task" Height="700" Width="850">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    <StackPanel>
-        <GroupBox Header="Avaliable parkings">
-            <ListView MaxHeight="80" ItemsSource="{Binding AllParkings}"
-                      SelectedItem="{Binding SelectedParking}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="{Binding Name}" Grid.Column="0"/>
-                            <Label Content="{Binding Address}" Grid.Column="1"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </GroupBox>
-        <GroupBox Height="100" BorderThickness="1" Header="Parking Customers">
-            <ListView ItemsSource="{Binding ParkingCustomers}"
-                      SelectedItem="{Binding SelectedCustomer}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="{Binding FirstName}" Grid.Column="0"/>
-                            <Label Content="{Binding LastName}" Grid.Column="1"/>
-                            <Label Content="{Binding CarNumber}" Grid.Column="2"/>
-                            <CheckBox Content="Premium:" IsEnabled="False" IsChecked="{Binding IsPremiumCustomer}" Grid.Column="3"/>
-                            <Label Content="{Binding MonthlyFee}" Grid.Column="4"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </GroupBox>
-        <GroupBox Header="Customer visits">
-            <ListView Height="120" ItemsSource="{Binding SelectedCustomer.CustomerVisits}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" ToolTip="{Binding}">
-                            <Label ContentStringFormat="Enter time: {0}" Content="{Binding EnterTime}"/>
-                            <Label ContentStringFormat="Liave time: {0}" Content="{Binding LeaveTime}"/>
-                            <Label ContentStringFormat="To Pay: {0}" Content="{Binding ToPay}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </GroupBox>
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <GroupBox Header="Avaliable parkings" DockPanel.Dock="Top">
+                <ListView MaxHeight="80" ItemsSource="{Binding AllParkings}"
+                          SelectedItem="{Binding SelectedParking}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="{Binding Name}" Grid.Column="0"/>
+                                <Label Content="{Binding Address}" Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+            <GroupBox Margin="1" Padding="1" DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <ComboBox ItemsSource="{Binding Months}"
+                          SelectedValuePath="Key" DisplayMemberPath="Value"
+                          SelectedValue="{Binding Path=SelectedMonth}"
+                          IsSynchronizedWithCurrentItem="True">
+
+                    </ComboBox>
+                    <Button Margin="1" Content="Get Invoices" Command="{Binding GetCustomerVisitsCommand}"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Height="100" BorderThickness="1" DockPanel.Dock="Top" Header="Parking Customers">
+                <ListView ItemsSource="{Binding ParkingCustomers}"
+                          SelectedItem="{Binding SelectedCustomer}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label ContentStringFormat="First name: {0}"  Content="{Binding FirstName}" Grid.Column="0"/>
+                                <Label ContentStringFormat="Last name: {0}" Content="{Binding LastName}" Grid.Column="1"/>
+                                <Label ContentStringFormat="Car number: {0}" Content="{Binding CarNumber}" Grid.Column="2"/>
+                                <CheckBox Content="Premium: " IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding IsPremiumCustomer}" Grid.Column="3"/>
+                                <Label ContentStringFormat="Fee: {0}" Content="{Binding MonthlyFee}" Grid.Column="4"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+            <GroupBox DockPanel.Dock="Top" Header="Customer visits">
+                <ListView Height="120" ItemsSource="{Binding SelectedCustomer.CustomerVisits}"
+                          SelectedItem="{Binding SelectedVisit}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" ToolTip="{Binding}">
+                                <Label ContentStringFormat="Enter time: {0}" Content="{Binding EnterTime}"/>
+                                <Label ContentStringFormat="Liave time: {0}" Content="{Binding LeaveTime}"/>
+                                <Label ContentStringFormat="To Pay: {0}" Content="{Binding ToPay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+            <GroupBox Header="Visit">
+                <StackPanel>
+                    <Label ContentStringFormat="First Name: {0}" Content="{Binding SelectedVisit.Customer.FirstName}"/>
+                    <Label ContentStringFormat="Last Name: {0}" Content="{Binding SelectedVisit.Customer.LastName}"/>
+                    <Label ContentStringFormat="CarNumber: {0}" Content="{Binding SelectedVisit.Customer.CarNumber}"/>
+                    <Label ContentStringFormat="Enter time: {0}" Content="{Binding SelectedVisit.EnterTime}"/>
+                    <Label ContentStringFormat="Liave time: {0}" Content="{Binding SelectedVisit.LeaveTime}"/>
+                    <Label ContentStringFormat="Is premium customer: {0}" Content="{Binding SelectedVisit.Customer.IsPremiumCustomer}"/>
+                    <Label ContentStringFormat="To Pay: {0}" Content="{Binding SelectedVisit.ToPay}"/>
+                    <Expander IsExpanded="False"  Header="Log">
+                        <ListView ItemsSource="{Binding SelectedVisit.Log}"/>
+                    </Expander>
+                </StackPanel>
+            </GroupBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1">
+            <GroupBox Header="Get invoices for month" Margin="1" Padding="1" DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <ComboBox ItemsSource="{Binding Months}"
+                          SelectedValuePath="Key" DisplayMemberPath="Value"
+                          SelectedValue="{Binding Path=SelectedMonth}"
+                          IsSynchronizedWithCurrentItem="True">
+
+                    </ComboBox>
+                    <Button Margin="1" Content="Get Invoices" Command="{Binding GetCustomerVisitsCommand}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="All invoices for all parkings" DockPanel.Dock="Top">
+                <ListView ItemsSource="{Binding AvaliableInvoinces}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label ContentStringFormat="Customer: {0}" Content="{Binding Customer}"/>
+                                <Label ContentStringFormat="Car number: {0}" Content="{Binding Customer.CarNumber}"/>
+                                <Label ContentStringFormat="To Pay: {0}" Content="{Binding Total}"/>
+                                <Expander Header="Details" IsExpanded="False">
+                                    <Label Content="{Binding Details}"/>
+                                </Expander>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+        </DockPanel>
+    </Grid>
 </Window>
