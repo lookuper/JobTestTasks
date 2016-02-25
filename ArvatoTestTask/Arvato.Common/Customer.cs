@@ -22,6 +22,9 @@ namespace Arvato.Common
 
         public Customer(String carNumber, String firstName = null, String lastName = null, AbstractParkingPrices prices = null)
         {
+            if (String.IsNullOrEmpty(carNumber))
+                throw new ArgumentException(nameof(CarNumber));
+
             CarNumber = carNumber;
             FirstName = firstName;
             LastName = lastName;

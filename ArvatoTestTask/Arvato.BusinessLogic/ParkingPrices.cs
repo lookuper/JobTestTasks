@@ -34,6 +34,12 @@ namespace Arvato.BusinessLogic
 
         public override double CalculateVisitPrice(Customer customer, Visit visit)
         {
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
+            if (visit == null)
+                throw new ArgumentNullException(nameof(visit));
+
             visit.Log.Add($"Starting calculation for customer '{customer.FirstName} {customer.LastName}' with car number: {customer.CarNumber}");
             var priceBusinessTime = customer.IsPremiumCustomer ? HuffAnHourPremiumPriceBusinessTime : HuffAnHourdRegularPriceBusinessTime;
             var priceNotBusinessTime = customer.IsPremiumCustomer ? HuffAnHourPremiumPriceNotBusinessTime : HuffAndHourRegularPriceNotBusinessTime;
@@ -71,18 +77,13 @@ namespace Arvato.BusinessLogic
             while (timePointer < visitTimeRange.End)
             {
                 if (IsTimeInBusinessTime(timePointer))
-                {
                     bClicks++;
-                    Console.WriteLine("Pay for premium: " + timePointer.ToShortTimeString());
-                }
                 else
-                {
                     nbClicks++;
-                    Console.WriteLine("Pay for regular: " + timePointer.ToShortTimeString());
-                }
 
                 timePointer = timePointer.AddMinutes(PaidIntervalInMinutes);
             }
+
             var businessPartPrice = bClicks * priceBusinessTime;
             var notBusinessPartPrice = nbClicks * priceNotBusinessTime;
             var total = businessPartPrice + notBusinessPartPrice;

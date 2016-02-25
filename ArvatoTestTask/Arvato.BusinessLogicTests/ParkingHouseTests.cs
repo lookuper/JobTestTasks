@@ -15,8 +15,8 @@ namespace Arvato.BusinessLogicTests
     [TestClass()]
     public class ParkingHouseTests
     {
-        static AbstractParkingPrices prices = new ParkingPrices();
-        static IParkingHouse parking = new DefaultParingHouse("", "", prices);
+        private static AbstractParkingPrices prices = new ParkingPrices();
+        private static IParkingHouse parking = new DefaultParingHouse("test parking", "test address", prices);
 
         [TestMethod]
         public void CarEntersTest()
@@ -73,7 +73,7 @@ namespace Arvato.BusinessLogicTests
 
             Assert.IsNotNull(invoices);
             Assert.IsTrue(invoices.Count == 3);
-            var totalIncomeShouldBe = 0+ 20 + 1.5;
+            var totalIncomeShouldBe = 259.75;
             Assert.IsTrue(invoices.Sum(i => i.Total) == totalIncomeShouldBe);
         }
     }

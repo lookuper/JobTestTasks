@@ -18,11 +18,6 @@ namespace Arvato.BusinessLogic
             // another parking with prices
         };
 
-        public ParkingController()
-        {
-            var i = 5;
-        }
-
         public void AddNewParking(IParkingHouse parking)
         {
             if (parking == null)

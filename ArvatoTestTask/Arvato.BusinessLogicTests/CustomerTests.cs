@@ -37,6 +37,7 @@ namespace Arvato.BusinessLogicTests
                 LeaveTime = TestData.DefaultDateTime.AddDays(10),
                 ToPay = 280,
             };
+
             customer.CustomerVisits.Add(maxVisit);
             var month = (Moths)TestData.DefaultDateTime.Month;
             var invoice = customer.GetInvoice(month);

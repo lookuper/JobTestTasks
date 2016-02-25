@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arvato.UI"
         xmlns:common="clr-namespace:Arvato.Common;assembly=Arvato.Common"
         mc:Ignorable="d"
-        Title="Avarto Test task" Height="700" Width="850">
+        Title="Arvato Test task" Height="700" Width="850">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -33,18 +33,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox>
-            <GroupBox Margin="1" Padding="1" DockPanel.Dock="Top">
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                    <ComboBox ItemsSource="{Binding Months}"
-                          SelectedValuePath="Key" DisplayMemberPath="Value"
-                          SelectedValue="{Binding Path=SelectedMonth}"
-                          IsSynchronizedWithCurrentItem="True">
-
-                    </ComboBox>
-                    <Button Margin="1" Content="Get Invoices" Command="{Binding GetCustomerVisitsCommand}"/>
-                </StackPanel>
-            </GroupBox>
-
             <GroupBox Height="100" BorderThickness="1" DockPanel.Dock="Top" Header="Parking Customers">
                 <ListView ItemsSource="{Binding ParkingCustomers}"
                           SelectedItem="{Binding SelectedCustomer}">

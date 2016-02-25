@@ -14,9 +14,8 @@ namespace Arvato.BusinessLogic.Tests
     [TestClass()]
     public class ParkingPricesTests
     {
-        AbstractParkingPrices testPrice = new ParkingPrices();
-        SimpleDataModel dataModel = new SimpleDataModel();
-            
+        private AbstractParkingPrices testPrice = new ParkingPrices();
+        private SimpleDataModel dataModel = new SimpleDataModel();            
 
         [TestMethod()]
         public void CalculateVisitPriceLessPaidTime()

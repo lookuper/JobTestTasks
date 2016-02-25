@@ -45,7 +45,6 @@ namespace Arvato.UI
             set { _customerVisits = value; OnPropertyChanged("CustomerVisits"); }
         }
 
-
         private Customer _selectedCustomer;
         public Customer SelectedCustomer
         {

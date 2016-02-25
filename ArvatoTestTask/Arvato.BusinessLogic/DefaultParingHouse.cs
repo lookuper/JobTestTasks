@@ -19,6 +19,12 @@ namespace Arvato.BusinessLogic
 
         public DefaultParingHouse(String parkingName, String parkingAddress, AbstractParkingPrices prices = null)
         {
+            if (String.IsNullOrEmpty(parkingName))
+                throw new ArgumentException(nameof(parkingName));
+
+            if (String.IsNullOrEmpty(parkingAddress))
+                throw new ArgumentException(nameof(parkingAddress));
+
             Name = parkingName;
             Address = parkingAddress;
             CurrentPrices = prices;
@@ -34,7 +40,16 @@ namespace Arvato.BusinessLogic
         }
 
         public void AddPremiumCustomer(String carNumber, String firstName, String lastName)
-        {          
+        {
+            if (String.IsNullOrEmpty(carNumber))
+                throw new ArgumentException(nameof(carNumber));
+
+            if (String.IsNullOrEmpty(firstName))
+                throw new ArgumentException(nameof(firstName));
+
+            if (String.IsNullOrEmpty(lastName))
+                throw new ArgumentException(nameof(lastName));
+
             if (AllVisits.ContainsKey(carNumber) && !AllVisits[carNumber].IsPremiumCustomer)
                 throw new InvalidOperationException("Such user already in database and its not a premium user, ability migration from regular to premium user would be avalibel in next version");
 
@@ -49,6 +64,9 @@ namespace Arvato.BusinessLogic
 
         public void CarEnters(String carNumber)
         {
+            if (String.IsNullOrEmpty(carNumber))
+                throw new ArgumentException(nameof(carNumber));
+
             Customer customer;
             if (!AllVisits.ContainsKey(carNumber))
             {
@@ -67,6 +85,9 @@ namespace Arvato.BusinessLogic
 
         public Visit CarLeave(String number)
         {
+            if (String.IsNullOrEmpty(number))
+                throw new ArgumentException(nameof(number));
+
             if (!AllVisits.ContainsKey(number))
                 throw new InvalidOperationException("Such car dont entered parking");
 
@@ -88,6 +109,9 @@ namespace Arvato.BusinessLogic
 
         public List<Visit> GetCustomerVisits(String carNumber)
         {
+            if (String.IsNullOrEmpty(carNumber))
+                throw new ArgumentException(nameof(carNumber));
+
             if (!AllVisits.ContainsKey(carNumber))
                 throw new InvalidOperationException("Cannot find such car in database");
 
