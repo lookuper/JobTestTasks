@@ -90,7 +90,7 @@ Please deliver a version at the end of each part. So finish part 1 first and del
 Find duplicate files by content. Implement the most fastest way, even for large files.
 
 Demo:
-![demo] (Altium/gif/Animation.gif)
+![demo](https://github.com/lookuper/JobTestTasks/blob/master/Altium/gif/Animation.gif)
 
 ---
 ####Actum:
